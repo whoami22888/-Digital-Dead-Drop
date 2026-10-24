@@ -10,7 +10,7 @@ import org.json.*;
 public final class MainActivity extends Activity {
   private JSONArray notes=new JSONArray(); private LinearLayout root; private Location point; private LocationManager gps;
   @Override public void onCreate(Bundle b){super.onCreate(b);gps=(LocationManager)getSystemService(LOCATION_SERVICE);try{notes=new JSONArray(getPreferences(0).getString("notes","[]"));}catch(Exception ignored){}home();}
-  private void page(String heading){ScrollView s=new ScrollView(this);s.setBackgroundColor(Color.rgb(10,20,28));root=new LinearLayout(this);root.setPadding(30,30,30,30);root.setOrientation(1);s.addView(root);setContentView(s);label(heading,26);}
+  private void page(String heading){ScrollView s=new ScrollView(this);s.setBackgroundColor(Color.rgb(10,20,28));root=new LinearLayout(this);root.setPadding(30,30,30,30);root.setOrientation(LinearLayout.VERTICAL);s.addView(root);setContentView(s);label(heading,26);}
   private void label(String value,int size){TextView t=new TextView(this);t.setText(value);t.setTextSize(size);t.setTextColor(0xffc2f7e5);t.setPadding(0,12,0,12);root.addView(t);}
   private void btn(String name,Runnable run){Button b=new Button(this);b.setText(name);root.addView(b);b.setOnClickListener(v->run.run());}
   private void alert(String m){new AlertDialog.Builder(this).setMessage(m).setPositiveButton("OK",null).show();}
